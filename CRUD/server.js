@@ -1,10 +1,28 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import jobPostRouter from "./routes/jobPostingRoute.js";
+// import cors from 'cors'
+
 
 const PORT = 6500;
+
 dotenv.config();
+
+
+
 const app = express();
+
+
+// app.cors()
+app.use(express.json())
+
+app.use('/job', jobPostRouter)
+
+
+
+
+
 
 const connectDb = () => {
   mongoose
