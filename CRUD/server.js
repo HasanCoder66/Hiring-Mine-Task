@@ -27,7 +27,7 @@ app.use('/job', jobPostRouter)
 const connectDb = () => {
   mongoose
     .connect(
-      process.env.MONGO_URI
+      process.env.HIRINGMONGO_URI
     )
     .then(() => {
       console.log("Mongodb connect");
