@@ -1,3 +1,5 @@
+import Job from '../model/jobPostingSchema.js'
+
 export const jobPosting = async (req, res) => {
   try {
     const description = req.body.description;
@@ -24,7 +26,11 @@ export const jobPosting = async (req, res) => {
     if (matchedNumbers2) {
       console.log("Extracted Phone Numbers:", matchedNumbers2);
     }
-    //  { $push: { likes: req.body.userId } }
+
+    const jobPostingSaved = await Job.create({email : extractedEmails , contact : [...matchedNumbers1 , ...matchedNumbers2]});
+    res.status(200).json({
+      massage : 'success',
+      data : jobPostingSaved    })
   } catch (error) {
     console.log(error);
   }
