@@ -1,25 +1,33 @@
 export const jobPosting = async (req, res) => {
   try {
-    const jobPostings = [];
 
-    const { email, contact, description } = req.body;
+    const description = req.body.description;
 
-    const newJobPosting = { email, contact, description };
-
-    jobPostings.push(newJobPosting);
-    console.log(newJobPosting)
-
-//    await newJobPosting.save()
-//     .then(savedJobPosting => {
-//       res.json({ message: 'Job posted successfully!', jobPosting: savedJobPosting });
-//     })
-//     .catch(error => {
-//       res.status(500).json({ error: 'Error saving job posting to the database.' });
-//     });
-//     res.json({
-//       message: "Job posted successfully!",
-//       jobPosting: newJobPosting,
-//     });
+    // Regular expression to match email addresses
+    const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+    
+    // Extracting email addresses from the description using the regex
+    const extractedEmails = description.match(emailRegex);
+    
+    // Regular expression to match phone numbers
+    const phoneRegex = /\b\d{10}\b|\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g;
+    
+    // Extracting phone numbers from the description using the regex
+    const extractedPhoneNumbers = description.match(phoneRegex);
+    
+    // Logging or using the extracted contact information
+    // if (extractedEmails) {
+    //   console.log("Extracted Email Addresses:", extractedEmails);
+    // }
+    
+    if (extractedPhoneNumbers) {
+      console.log("Extracted Phone Numbers:", extractedPhoneNumbers);
+    }
+    
+    // You can use or send these extracted contact information as needed
+    
+    //  { $push: { likes: req.body.userId } }
+    
   } catch (error) {
     console.log(error);
   }

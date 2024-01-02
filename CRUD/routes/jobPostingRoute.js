@@ -7,6 +7,7 @@ const jobPostRouter = express.Router()
 
 
 jobPostRouter.post('/job-posting', jobPosting)
+// 
 
 
 

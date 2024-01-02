@@ -1,25 +1,20 @@
 
 import mongoose from "mongoose"
 const jobPostingSchema = new mongoose.Schema({
-    // userId: {
-    //     type: String,
-    //     required: true
-    // },
 
     email : {
-        type: String,
-        required: true,
-        unique : true
+        type: Array,
+        default: []
     },
 
-    description: {
-        type: String,
-        // required: true,
-    },
+    // description: {
+    //     type: String,
+        
+    // },
 
     contact: {
-        type: String,
-        // required: true,
+        type: Array,
+        default: []
     },
 
    
