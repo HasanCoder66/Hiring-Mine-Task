@@ -16,9 +16,9 @@ export const jobPosting = async (req, res) => {
     const extractedPhoneNumbers = description.match(phoneRegex);
     
     // Logging or using the extracted contact information
-    // if (extractedEmails) {
-    //   console.log("Extracted Email Addresses:", extractedEmails);
-    // }
+    if (extractedEmails) {
+      console.log("Extracted Email Addresses:", extractedEmails);
+    }
     
     if (extractedPhoneNumbers) {
       console.log("Extracted Phone Numbers:", extractedPhoneNumbers);
